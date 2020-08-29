@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: sql104.byethost6.com
--- Generation Time: Aug 28, 2020 at 12:41 AM
--- Server version: 5.6.48-88.0
--- PHP Version: 7.2.22
+-- Host: localhost
+-- Generation Time: Aug 29, 2020 at 08:28 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,32 +24,61 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `personal`
+--
+
+CREATE TABLE `personal` (
+  `Cedula` int(20) NOT NULL,
+  `Nombre` varchar(40) NOT NULL,
+  `Cargo` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `personal`
+--
+
+INSERT INTO `personal` (`Cedula`, `Nombre`, `Cargo`) VALUES
+(157394, 'Francisco Perez', 'Almacenista'),
+(222112, 'Sebastian Arenas', 'Auxiliar contable'),
+(1234912, 'Maria Serrano Avila', 'Secretaria');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(3) NOT NULL,
   `Usuario` varchar(10) NOT NULL,
-  `Contrasena` varchar(20) NOT NULL
+  `Contrasena` varchar(20) NOT NULL,
+  `Permisos` varchar(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `Usuario`, `Contrasena`) VALUES
-(1, 'Admin', '1234'),
-(2, 'User1', '123456');
+INSERT INTO `users` (`id`, `Usuario`, `Contrasena`, `Permisos`) VALUES
+(1, 'Admin', '1234', 'u'),
+(2, 'User1', '123456', 'r');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `personal`
+--
+ALTER TABLE `personal`
+  ADD PRIMARY KEY (`Cedula`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `Usuario` (`Usuario`);
 
 --
 -- AUTO_INCREMENT for dumped tables
