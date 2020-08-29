@@ -13,5 +13,5 @@ $data = mysqli_query($con, $query);
 //  echo $row["Contrasena"];
 //  echo "<br>";
 //}
-
+mysqli_close($con);
 ?>

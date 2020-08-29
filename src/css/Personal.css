@@ -1,0 +1,13 @@
+td, th{
+    text-align: left;
+    border-style: solid;
+    border-width: 1px;
+}
+
+td input{
+    border-style: none;
+}
+
+body{
+    margin: 5% 10%;
+}
